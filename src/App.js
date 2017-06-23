@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 
+import FileUpload from './FileUpload';
+
 import './App.css';
+
 
 class App extends Component {
 
@@ -45,6 +48,10 @@ class App extends Component {
         `Error ${error.code}: ${error.message}`));    
   }
 
+  handleOnUpload(){
+
+  }
+
   renderLoginButton(){
     const imgStyle = {
       width: 100,
@@ -57,6 +64,8 @@ class App extends Component {
           <img src={this.state.user.photoURL} style={imgStyle}/>
           <p>Hola {this.state.user.displayName}</p>
           <button onClick={this.handleLogout}>Salir</button>
+
+           <FileUpload onUpload={this.handleOnUpload()}/>
         </div>
       );
     }else{
@@ -74,7 +83,7 @@ class App extends Component {
         </div>
         <p className="App-intro">
           {this.renderLoginButton()}
-        </p>
+        </p>       
       </div>
     );
   }
